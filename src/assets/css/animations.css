@@ -1,0 +1,91 @@
+/* src/assets/css/animations.css
+   All @keyframes + data-attribute trigger rules + global resets.
+   Reproduced exactly from DESIGN_SYSTEM.md §6 Keyframe Animations.
+   Animations are triggered by toggling data-* attributes via JS —
+   never via v-show / v-if. */
+
+/* --- ENTRANCE (triggered by data-in="1") --- */
+[data-entrance] { opacity: 0; }
+
+[data-entrance="rise"][data-in="1"] {
+  animation: odbRise 1.1s cubic-bezier(.2,.8,.2,1) both;
+}
+[data-entrance="soft"][data-in="1"] {
+  animation: odbSoft 1.3s ease-out both;
+}
+[data-entrance="pop"][data-in="1"] {
+  animation: odbPop .8s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes odbRise {
+  from { opacity: 0; transform: translateY(80px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes odbSoft {
+  from { opacity: 0; transform: scale(1.06); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes odbPop {
+  0%   { opacity: 0; transform: scale(.55); }
+  70%  { opacity: 1; transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* --- REVEAL ON SCROLL (triggered by data-rv="1") --- */
+[data-reveal] { opacity: 0; }
+
+[data-reveal][data-rv="1"] {
+  animation: odbReveal .9s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes odbReveal {
+  from { opacity: 0; transform: translateY(42px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- LOADER --- */
+[data-loader-word] { transform: translateY(110%); }
+[data-loader-word][data-go="1"] {
+  animation: odbWordUp 1s .1s cubic-bezier(.2,.8,.2,1) both;
+}
+[data-loader][data-up="1"] {
+  animation: odbLoaderUp 1s cubic-bezier(.76,0,.24,1) both;
+}
+[data-loader-bar][data-go="1"] {
+  animation: odbBar 2.1s linear both;
+}
+
+@keyframes odbWordUp   { from { transform: translateY(115%); } to { transform: translateY(0); } }
+@keyframes odbLoaderUp { from { transform: translateY(0);    } to { transform: translateY(-110%); } }
+@keyframes odbBar      { from { transform: scaleX(0);        } to { transform: scaleX(1); } }
+
+/* --- AMBIENT / LOOP ANIMATIONS (always on) --- */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .25; }
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes floatySlow {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-22px); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* --- GLOBAL RESETS --- */
+html, body { margin: 0; padding: 0; background: #050505; }
+* { box-sizing: border-box; }
+::selection { background: #FF2D2D; color: #050505; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+@media (pointer: fine) { * { cursor: none !important; } }
+
+/* --- MAGNETIC UTILITY ---
+   .mag is a global class used across components; AppCursor's JS sets the
+   transform, this provides the eased snap (source reset + DESIGN_SYSTEM §10/§11). */
+.mag { transition: transform 0.35s cubic-bezier(.2, .8, .2, 1); }

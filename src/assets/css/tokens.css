@@ -1,0 +1,43 @@
+/* src/assets/css/tokens.css
+   CSS custom properties — extracted from DESIGN_SYSTEM.md
+   §2 Color Palette · §3 Typography · §4 Spacing & Layout · §5 Z-Index Layers */
+
+:root {
+  /* ---- §2 Colors ---- */
+  --color-bg:       #050505;                 /* page background */
+  --color-fg:       #F5F5F5;                 /* primary text / light */
+  --color-red:      #FF2D2D;                 /* brand accent — red */
+  --color-cream:    #FFF3E2;                 /* warm white */
+  --color-orange:   #FF6A00;                 /* section labels / callouts */
+  --color-text-2:   #cfcfcf;                 /* body copy */
+  --color-text-3:   #bdbdbd;                 /* secondary body */
+  --color-muted:    #888888;                 /* meta / captions */
+  --color-muted-2:  #777777;                 /* nav links */
+  --color-gold:     #9a7d57;                 /* awards page muted labels */
+  --color-border:   rgba(255, 255, 255, 0.10); /* subtle borders */
+  --color-border-2: rgba(255, 255, 255, 0.30); /* button borders */
+  --color-overlay:  rgba(5, 5, 5, 0.85);       /* image overlays */
+
+  /* ---- §3 Font families ---- */
+  --font-display: 'Anton', sans-serif;          /* headings, giant type */
+  --font-body:    'Space Grotesk', sans-serif;  /* UI, body, labels */
+
+  /* ---- §4 Spacing & Layout ---- */
+  --page-x:           clamp(20px, 4vw, 56px);    /* horizontal page padding */
+  --section-y-lg:     clamp(90px, 14vh, 170px);  /* awards, legacy */
+  --section-y-xl:     clamp(110px, 20vh, 260px); /* legacy */
+  --section-y-footer: clamp(70px, 11vh, 130px);
+  --max-content:      1500px;                     /* max content container */
+
+  /* ---- §5 Z-Index Layers ---- */
+  --z-loader:        9999;
+  --z-cursor-dot:    9999;
+  --z-cursor-ring:   9998;
+  --z-progress:      9000;
+  --z-nav:           8000;
+  --z-hero-sticker:  5;
+  --z-hero-front:    4;
+  --z-hero-portrait: 3;
+  --z-hero-back:     2;
+  --z-hero-gradient: 1;
+}
