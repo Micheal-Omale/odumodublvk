@@ -50,7 +50,7 @@ dist/
 .env.*.local
 
 # Reference files (re-export from Claude Design when needed)
-reference/
+reference/ 
 
 # Editor
 .vscode/
