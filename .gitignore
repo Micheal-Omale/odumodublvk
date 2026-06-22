@@ -37,3 +37,24 @@ __screenshots__/
 
 # Vite
 *.timestamp-*-*.mjs
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Reference files (re-export from Claude Design when needed)
+reference/
+
+# Editor
+.vscode/
+.DS_Store
+
+# Vite
+*.local
